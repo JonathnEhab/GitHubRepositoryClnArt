@@ -1,0 +1,65 @@
+package com.example.data.repository
+
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.map
+import com.example.data.data_source.local.LocalDataSource
+import com.example.data.data_source.remote.api_services.TrendingGithubApi
+import com.example.data.data_source.remote.dto.trending_repo.TrendingGithubDataModel
+import com.example.data.mapper.toCustomExceptionDomainModel
+import com.example.data.mapper.toTrendingGithubDomainModel
+import com.example.data.mapper.toTrendingRepositoriesEntity
+import com.example.domain.model.TrendingGithubDomainModel
+import com.example.domain.repository.TrendingRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+
+class TrendingRepositoryImp(
+    private val trendingGithubApi: TrendingGithubApi,
+    private val localDataSource: LocalDataSource
+) : TrendingRepository {
+    override suspend fun fetchTrendingGithub(isForceFetch: Boolean): Flow<PagingData<TrendingGithubDomainModel>>
+    =          flow{
+        if (localDataSource.readIsFirstTime() || isForceFetch) {
+            try {
+                // fetch
+                val trendingGithubDataModel = trendingGithubApi.fetchTrendingRepositories().body() as TrendingGithubDataModel
+
+                // cache
+                localDataSource.insertTrendingRepositories(trendingGithubDataModel.items.map { it.toTrendingRepositoriesEntity() })
+
+                if (localDataSource.readIsFirstTime()) // only update it when first time to enter app only
+                    localDataSource.saveIsFirstTime(false)
+
+                // read cached data
+                emitAll(
+                    Pager(
+                        config = PagingConfig(pageSize = 10, enablePlaceholders = false),
+                        pagingSourceFactory = { localDataSource.getTrendingRepositories() }
+                    ).flow
+                        .map { pagingData ->
+                            pagingData.map { it.toTrendingGithubDomainModel() }
+                        }
+                )
+            } catch (e: Exception) {
+                throw e.toCustomExceptionDomainModel()
+            }
+        } else {
+            // read cached data
+            emitAll(
+                Pager(
+                    config = PagingConfig(pageSize = 10, enablePlaceholders = false),
+                    pagingSourceFactory = { localDataSource.getTrendingRepositories() }
+                ).flow
+                    .map { pagingData ->
+                        pagingData.map { it.toTrendingGithubDomainModel() }
+                    }
+            )
+        }
+    }
+
+
+}

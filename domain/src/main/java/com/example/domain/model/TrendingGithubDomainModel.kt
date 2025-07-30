@@ -5,6 +5,6 @@ data class TrendingGithubDomainModel (
     val name : String,
     val avatar : String,
     val description : String,
-    val starts : String,
+    val stars : Int,
     val owner : String
 )
