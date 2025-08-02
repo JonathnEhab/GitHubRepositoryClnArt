@@ -1,14 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.githubrepositoryclnart"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.githubrepositoryclnart"
@@ -32,6 +31,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -67,16 +69,22 @@ dependencies {
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.5")
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    ksp("com.google.dagger:hilt-android-compiler:2.48")
+    val dagger_hilt= "2.48"
+    implementation("com.google.dagger:hilt-android:$dagger_hilt")
+    kapt("com.google.dagger:hilt-compiler:$dagger_hilt")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     // ROOM
-    annotationProcessor("androidx.room:room-compiler:2.6.0")
+
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
     // To use Kotlin annotation processing tool (kapt)
-    ksp("androidx.room:room-compiler:2.6.0")
+    kapt("androidx.room:room-compiler:$room_version")
+
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.6.0")
     debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
@@ -84,10 +92,4 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":presentation"))
 
-}
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>{
-    kotlinOptions.jvmTarget = "1.8"
-}
-tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask> {
-    kotlinOptions.jvmTarget = "1.8"
 }

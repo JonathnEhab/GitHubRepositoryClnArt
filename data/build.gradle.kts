@@ -2,12 +2,13 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.data"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -55,12 +56,21 @@ dependencies {
     // gson for serialized name annotation
     implementation("com.google.code.gson:gson:2.10")
 
-    // ROOM
-    annotationProcessor("androidx.room:room-compiler:2.6.0")
+    //room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
     // To use Kotlin annotation processing tool (kapt)
-    ksp("androidx.room:room-compiler:2.6.0")
+    kapt("androidx.room:room-compiler:$room_version")
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:2.6.0")
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.room:room-paging:$room_version")
+    // Dagger - Hilt
+    val dagger_hilt= "2.48"
+    implementation("com.google.dagger:hilt-android:$dagger_hilt")
+    kapt("com.google.dagger:hilt-compiler:$dagger_hilt")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     // paging
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")

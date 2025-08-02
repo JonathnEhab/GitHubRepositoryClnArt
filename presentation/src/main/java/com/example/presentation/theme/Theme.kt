@@ -45,7 +45,7 @@ private val darkColorScheme = darkColorScheme(
 )
 
 @Composable
-fun VodafoneTaskTheme(
+fun GitHubRepositoryClnArtTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit

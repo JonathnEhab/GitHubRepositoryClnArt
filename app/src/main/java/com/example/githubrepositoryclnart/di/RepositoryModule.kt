@@ -21,7 +21,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
-    @Binds
+    @Provides
     @ViewModelScoped
     fun provideTrendingGithubRepository(
         trendingGithubApi: TrendingGithubApi,
@@ -30,7 +30,7 @@ object RepositoryModule {
         return TrendingRepositoryImp(trendingGithubApi, localDataSource)
     }
 
-    @Binds
+    @Provides
     @ViewModelScoped
     fun provideRepoDetailsRepository(
         repoDetailsApi: RepoDetailsApi
@@ -38,7 +38,7 @@ object RepositoryModule {
         return RepoDetailsRepositoryImp(repoDetailsApi)
     }
 
-    @Binds
+    @Provides
     @ViewModelScoped
     fun provideIssuesRepository(
         issuesApi: IssuesApi

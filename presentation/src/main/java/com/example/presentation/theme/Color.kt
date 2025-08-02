@@ -1,5 +1,4 @@
 package com.example.presentation.theme
-
 import androidx.compose.ui.graphics.Color
 
 val light_primary = Color(0xFFFFFFFF)
@@ -37,4 +36,3 @@ val dark_onSurface = Color(0xFFFFFFFF)
 
 val LightGreen = Color(0xFF31B057)
 val LightGray = Color(0xFF929292)
-
