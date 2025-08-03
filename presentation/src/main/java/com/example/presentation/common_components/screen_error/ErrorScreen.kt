@@ -1,4 +1,4 @@
-package com.example.presentation.common_components
+package com.example.presentation.common_components.screen_error
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

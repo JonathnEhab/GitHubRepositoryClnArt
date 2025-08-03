@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.presentation.R
-import org.xmlpull.v1.sax2.Driver
+import androidx.compose.material.Divider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,7 +66,7 @@ fun AppBar(
             }
         }
     )
-    Driver()
+    Divider()
 
 }
 
