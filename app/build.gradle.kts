@@ -29,17 +29,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.5"
     }
 }
 
@@ -69,7 +69,7 @@ dependencies {
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.5")
     // Dagger - Hilt
-    val dagger_hilt= "2.48"
+    val dagger_hilt= "2.50"
     implementation("com.google.dagger:hilt-android:$dagger_hilt")
     kapt("com.google.dagger:hilt-compiler:$dagger_hilt")
     kapt("androidx.hilt:hilt-compiler:1.1.0")

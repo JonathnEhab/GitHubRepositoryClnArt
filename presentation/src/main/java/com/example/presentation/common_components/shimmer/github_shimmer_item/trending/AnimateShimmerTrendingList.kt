@@ -21,7 +21,7 @@ fun AnimateShimmerTrendingList() {
     LazyColumn(
         modifier = Modifier.testTag(TAG_STRING_LOADING_SHIMMER_TRENDING_LIST)
     ) {
-        items(count = 5){
+        items(count = 8){
             val ShimmerColor = listOf(
                 Color.LightGray.copy(alpha = .6f),
                 Color.LightGray.copy(alpha = .2f),

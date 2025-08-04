@@ -27,11 +27,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.5"
     }
 }
 
@@ -66,7 +69,7 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     implementation("androidx.room:room-paging:$room_version")
     // Dagger - Hilt
-    val dagger_hilt= "2.48"
+    val dagger_hilt= "2.50"
     implementation("com.google.dagger:hilt-android:$dagger_hilt")
     kapt("com.google.dagger:hilt-compiler:$dagger_hilt")
     kapt("androidx.hilt:hilt-compiler:1.1.0")

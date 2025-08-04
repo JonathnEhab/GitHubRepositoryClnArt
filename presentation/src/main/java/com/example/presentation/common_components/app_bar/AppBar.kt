@@ -3,6 +3,7 @@ package com.example.presentation.common_components.app_bar
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -42,7 +43,8 @@ fun AppBar(
     TopAppBar(
         modifier = Modifier.background(appBarBackgroundColor),
         title = {
-            Row(modifier = Modifier.fillMaxWidth()) {
+            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center) {
                 Image(
                     modifier = Modifier
                         .padding(8.dp)
@@ -59,7 +61,7 @@ fun AppBar(
                     text = titleText,
                     color = textColor,
                     fontWeight = titleFontWeight,
-                    style = titleTextStyle
+                    style = titleTextStyle,
                 )
 
 
