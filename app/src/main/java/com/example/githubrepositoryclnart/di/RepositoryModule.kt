@@ -16,13 +16,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
     @Provides
-    @ViewModelScoped
+    @Singleton
     fun provideTrendingGithubRepository(
         trendingGithubApi: TrendingGithubApi,
         localDataSource: LocalDataSource
@@ -31,7 +32,7 @@ object RepositoryModule {
     }
 
     @Provides
-    @ViewModelScoped
+    @Singleton
     fun provideRepoDetailsRepository(
         repoDetailsApi: RepoDetailsApi
     ): RepoDetailsRepository {
@@ -39,7 +40,7 @@ object RepositoryModule {
     }
 
     @Provides
-    @ViewModelScoped
+    @Singleton
     fun provideIssuesRepository(
         issuesApi: IssuesApi
     ): IssuesRepository {

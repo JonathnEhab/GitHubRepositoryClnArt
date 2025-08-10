@@ -13,18 +13,19 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @ViewModelScoped
+    @Singleton
     @Provides
     fun provideDispatcherProvider(): DispatcherProvider {
         return StandardDispatcherProvider()
     }
 
-    @ViewModelScoped
+    @Singleton
     @Provides
     fun provideFetchTrendingGithubUseCase(
         trendingRepository: TrendingRepository
@@ -32,7 +33,7 @@ object AppModule {
         return FetchTrendingGithubUseCase(trendingRepository)
     }
 
-    @ViewModelScoped
+    @Singleton
     @Provides
     fun provideFetchRepositoryDetailsUseCase(
         repoDetailsRepository: RepoDetailsRepository
@@ -40,7 +41,7 @@ object AppModule {
         return FetchRepositoryDetailsUseCase(repoDetailsRepository)
     }
 
-    @ViewModelScoped
+    @Singleton
     @Provides
     fun provideIssuesUseCase(
         issuesRepository: IssuesRepository

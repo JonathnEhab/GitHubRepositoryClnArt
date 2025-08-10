@@ -33,7 +33,7 @@ fun TrendingGithubLazyColumn(
     ) {
         items(
             count = trendingGithubList.itemCount,
-            key = trendingGithubList.itemKey { trendingGithubList -> trendingGithubList.id },
+            key = trendingGithubList.itemKey { trendingGithubList -> trendingGithubList.id!! },
             contentType = trendingGithubList.itemContentType { "repos" }
         ) { index ->
             val trendingGithubUiModel = trendingGithubList[index]

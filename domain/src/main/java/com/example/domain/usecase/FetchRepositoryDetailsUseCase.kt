@@ -1,6 +1,5 @@
 package com.example.domain.usecase
 
-import androidx.lifecycle.LifecycleOwner
 import com.example.domain.model.RepositoryDetailsDomainModel
 import com.example.domain.repository.RepoDetailsRepository
 

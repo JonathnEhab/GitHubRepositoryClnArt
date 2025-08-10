@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.paging.compose.LazyPagingItems
+import com.example.presentation.background.Background
 import com.example.presentation.model.TrendingGithubUiModel
 import com.example.presentation.screens.trending_screen.tredning_github_lazy_column.TrendingGithubLazyColumn
 import com.example.presentation.screens.trending_screen.trending_item.preview.createFakeTrendingLazyPagingItemsUiModel
@@ -44,7 +45,7 @@ fun TrendingGithubContent(
             contentColor = LightGreen
         )
     }
-
+    Background()
 }
 
 @OptIn(ExperimentalMaterialApi::class)

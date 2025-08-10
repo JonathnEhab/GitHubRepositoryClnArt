@@ -12,5 +12,5 @@ interface RepoDetailsApi {
     suspend fun fetchRepoDetails(
         @Path(OWNER_KEY) owner: String,
         @Path(REPO_NAME_KEY) name: String
-    ): Response<RepositoryDetailsDataModel>
+    ): RepositoryDetailsDataModel
 }

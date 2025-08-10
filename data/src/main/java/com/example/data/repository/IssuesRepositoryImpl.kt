@@ -12,7 +12,7 @@ class IssuesRepositoryImpl(
 ) : IssuesRepository {
     override suspend fun fetchIssues(owner: String, name: String): List<IssuesDomainModel> {
         return try {
-            val issuesDataModel = issuesApi.fetchIssues(owner, name).body() as IssuesDataModel
+            val issuesDataModel = issuesApi.fetchIssues(owner, name) as IssuesDataModel
             issuesDataModel.map { it.toIssuesDomainModel() }
         } catch (e:Exception){
             throw e.toCustomExceptionDomainModel()

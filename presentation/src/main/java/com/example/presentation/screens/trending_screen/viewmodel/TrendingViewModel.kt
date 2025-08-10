@@ -32,7 +32,7 @@ class TrendingViewModel @Inject constructor(
         requestTrendingGithub(isForceFetch = false)
     }
 
-    private fun requestTrendingGithub( isForceFetch : Boolean){
+     fun requestTrendingGithub( isForceFetch : Boolean){
         _trendingUiState.value= TrendingUiState(isLoading = true)
         viewModelScope.launch(dispatcher.io ) {
             try {

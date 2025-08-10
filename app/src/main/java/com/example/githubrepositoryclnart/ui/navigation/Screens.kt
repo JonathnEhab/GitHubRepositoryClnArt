@@ -11,9 +11,8 @@ sealed class Screens(val route: String) {
     data object Home : Screens(route = HOME_SCREEN)
 
 
-    data object Details :
-        Screens(route = "$DETAILS_SCREEN/{$OWNER_ARGUMENT_KEY}/{$NAME_ARGUMENT_KEY") {
-        fun passOwnerAddName(owner: String, name: String): String {
+    data object Details : Screens(route = "$DETAILS_SCREEN/{$OWNER_ARGUMENT_KEY}/{$NAME_ARGUMENT_KEY}"){
+        fun passOwnerAndName(owner: String, name:String): String {
             return "$DETAILS_SCREEN/$owner/$name"
         }
     }

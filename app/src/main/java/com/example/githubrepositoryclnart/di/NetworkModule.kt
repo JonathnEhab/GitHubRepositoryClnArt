@@ -37,19 +37,19 @@ object NetworkModule {
             .build()
     }
 
-    @ViewModelScoped
+    @Singleton
     @Provides
     fun provideTrendingRepositoriesApiService(retrofit: Retrofit): TrendingGithubApi {
         return retrofit.create(TrendingGithubApi::class.java)
     }
 
-    @ViewModelScoped
+    @Singleton
     @Provides
     fun provideRepositoryDetailsApiService(retrofit: Retrofit): RepoDetailsApi {
         return retrofit.create(RepoDetailsApi::class.java)
     }
 
-    @ViewModelScoped
+    @Singleton
     @Provides
     fun provideIssuesApiService(retrofit: Retrofit): IssuesApi {
         return retrofit.create(IssuesApi::class.java)

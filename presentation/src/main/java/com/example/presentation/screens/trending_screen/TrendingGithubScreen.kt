@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.presentation.background.Background
 import com.example.presentation.common_components.app_bar.AppBar
 import com.example.presentation.common_components.screen_error.ErrorSection
 import com.example.presentation.common_components.shimmer.github_shimmer_item.trending.AnimateShimmerTrendingList
@@ -27,6 +28,7 @@ fun TrendingGithubScreen(
     onRefreshButtonClick: () -> Unit,
     onItemClick: (owner: String, repoName: String) -> Unit
     ) {
+    Background()
     Log.d("trending", trendingUiState.toString())
     Column(
         modifier = Modifier
@@ -48,8 +50,10 @@ fun TrendingGithubScreen(
                 )
             }
             else ->{
+                Log.d("TrendingCheck", "داخل جزء عرض البيانات")
                 trendingUiState.trendingGithubPagingDataFlow?.let {
                     val trendingRepositoryLazyPagingItem = it.collectAsLazyPagingItems()
+                    Log.d("TrendingCheck", "عدد العناصر: ${trendingRepositoryLazyPagingItem.itemCount}")
                     TrendingGithubContent(
                         trendingRepositoryLazyPagingItem,
                         onPulledToRefresh

@@ -1,5 +1,11 @@
 package com.example.presentation.common_components.shimmer.details
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,11 +22,43 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+@Composable
+fun AnimateShimmerDetails() {
+    val shimmerColors = listOf(
+        Color.LightGray.copy(alpha = 0.6f),
+        Color.LightGray.copy(alpha = 0.2f),
+        Color.LightGray.copy(alpha = 0.6f),
+    )
 
+    val transition =
+        rememberInfiniteTransition(label = "") // to animate our shimmer as long as we want
+    val translateAnim = transition.animateFloat(
+        initialValue = 0f,
+        targetValue = 1000f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 700,
+                easing = LinearEasing
+            ),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = ""
+    )
+
+    val brush = Brush.linearGradient(
+        colors = shimmerColors,
+        start = Offset.Zero,
+        end = Offset(x = translateAnim.value, y = translateAnim.value)
+    )
+
+    ShimmerDetails(brush = brush)
+
+}
 @Composable
 fun ShimmerDetails(brush: Brush) {
     Column(
@@ -88,7 +126,7 @@ fun ShimmerDetails(brush: Brush) {
             )
             Spacer(
                 modifier = Modifier
-                    .fillMaxWidth(fraction = .7f)
+                    .fillMaxWidth(fraction = .9f)
                     .height(60.dp)
                     .padding(bottom = 10.dp)
                     .clip(RoundedCornerShape(2.dp))

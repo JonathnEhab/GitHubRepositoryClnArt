@@ -3,7 +3,6 @@ package com.example.presentation.screens.issues_screen.issues_item
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,7 +22,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -40,7 +37,6 @@ import com.example.presentation.util.Locators.TAG_STRING_ISSUE_AUTHOR_LABEL
 import com.example.presentation.util.Locators.TAG_STRING_ISSUE_IMAGE
 import com.example.presentation.util.Locators.TAG_STRING_ISSUE_STATE_LABEL
 import com.example.presentation.util.Locators.TAG_STRING_ISSUE_TITLE_LABEL
-import java.nio.file.WatchEvent
 
 @SuppressLint("DefaultLocale")
 @Composable

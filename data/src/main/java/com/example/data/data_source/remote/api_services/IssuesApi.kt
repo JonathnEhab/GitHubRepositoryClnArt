@@ -12,5 +12,5 @@ interface IssuesApi {
     suspend fun fetchIssues(
         @Path(OWNER_KEY) owner: String,
         @Path(REPO_NAME_KEY) name: String
-    ): Response<IssuesDataModel>
+    ): IssuesDataModel
 }
