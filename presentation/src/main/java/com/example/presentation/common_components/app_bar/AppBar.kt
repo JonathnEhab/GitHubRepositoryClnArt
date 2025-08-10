@@ -4,8 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -27,8 +30,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.presentation.R
 import androidx.compose.material.Divider
+import androidx.compose.material3.TopAppBarDefaults
+import com.example.presentation.background.Background
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBar(
     modifier: Modifier = Modifier,
@@ -37,40 +41,46 @@ fun AppBar(
     titleTextStyle: TextStyle = MaterialTheme.typography.titleLarge,
     titleFontWeight: FontWeight = FontWeight.Bold,
     titleTag: String = "",
-    appBarBackgroundColor: Color = MaterialTheme.colorScheme.primary,
     onBackArrowClicked: () -> Unit,
 ) {
-    TopAppBar(
-        modifier = Modifier.background(appBarBackgroundColor),
-        title = {
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center) {
-                Image(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .clickable { onBackArrowClicked() },
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = null,
-                    colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary)
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(56.dp) // ارتفاع الـ AppBar
+    ) {
 
-                )
-                Text(
-                    modifier = modifier
-                        .testTag(titleTag)
-                        .fillMaxWidth(),
-                    text = titleText,
-                    color = textColor,
-                    fontWeight = titleFontWeight,
-                    style = titleTextStyle,
-                )
+        Background()
 
 
-            }
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Image(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .clickable { onBackArrowClicked() },
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = null,
+                colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary)
+            )
+            Text(
+                modifier = Modifier
+                    .testTag(titleTag)
+                    .fillMaxWidth(),
+                text = titleText,
+                color = textColor,
+                fontWeight = titleFontWeight,
+                style = titleTextStyle,
+            )
         }
-    )
+    }
     Divider()
-
 }
+
 
 @Preview(showBackground = true)
 @Composable

@@ -3,6 +3,7 @@ package com.example.presentation.screens.trending_screen
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ExperimentalMaterialApi
@@ -27,47 +28,44 @@ fun TrendingGithubScreen(
     onPulledToRefresh: (Boolean) -> Unit,
     onRefreshButtonClick: () -> Unit,
     onItemClick: (owner: String, repoName: String) -> Unit
-    ) {
-    Background()
-    Log.d("trending", trendingUiState.toString())
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.background)
-    ) {
-        AppBar(
-            titleTag = TAG_STRING_TRENDING_APP_BAR_TITLE_LABEL,
-            onBackArrowClicked = {}
-        )
-        when {
-            trendingUiState.isLoading -> {
-                AnimateShimmerTrendingList()
-            }
-            trendingUiState.isError -> {
-                ErrorSection(
-                    onRefreshButtonClicked = onRefreshButtonClick,
-                    customErrorExceptionUiModel = trendingUiState.customErrorExceptionUiModel
-                )
-            }
-            else ->{
-                Log.d("TrendingCheck", "داخل جزء عرض البيانات")
-                trendingUiState.trendingGithubPagingDataFlow?.let {
-                    val trendingRepositoryLazyPagingItem = it.collectAsLazyPagingItems()
-                    Log.d("TrendingCheck", "عدد العناصر: ${trendingRepositoryLazyPagingItem.itemCount}")
-                    TrendingGithubContent(
-                        trendingRepositoryLazyPagingItem,
-                        onPulledToRefresh
+) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Background()
 
-                    ) { owner, repoName ->
-                        onItemClick(owner,repoName)
-
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            AppBar(
+                titleTag = TAG_STRING_TRENDING_APP_BAR_TITLE_LABEL,
+                onBackArrowClicked = {}
+            )
+            when {
+                trendingUiState.isLoading -> {
+                    AnimateShimmerTrendingList()
+                }
+                trendingUiState.isError -> {
+                    ErrorSection(
+                        onRefreshButtonClicked = onRefreshButtonClick,
+                        customErrorExceptionUiModel = trendingUiState.customErrorExceptionUiModel
+                    )
+                }
+                else -> {
+                    trendingUiState.trendingGithubPagingDataFlow?.let {
+                        val trendingRepositoryLazyPagingItem = it.collectAsLazyPagingItems()
+                        TrendingGithubContent(
+                            trendingRepositoryLazyPagingItem,
+                            onPulledToRefresh
+                        ) { owner, repoName ->
+                            onItemClick(owner, repoName)
+                        }
                     }
                 }
             }
-
         }
     }
-}@ExperimentalMaterialApi
+}
+
+@ExperimentalMaterialApi
 @Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun PreviewTrendingGithubScreenLoading() {

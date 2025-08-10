@@ -55,7 +55,7 @@ fun TrendingItem(
             .clickable {
                 onItemClicked(trendingGithubUiModel.owner, trendingGithubUiModel.name)
             }
-            .background(color = Color.White)
+            .background(color = Color.Transparent)
             .clip(RoundedCornerShape(25.dp))
     ) {
         Image(

@@ -37,15 +37,18 @@ fun TrendingGithubContent(
     ){
         TrendingGithubLazyColumn(
             trendingGithubList = trendingRepositoriesLazyPagingItems
-        ) { owner, repoName -> onItemClicked(owner, repoName) }
+        ) {
+          owner, repoName -> onItemClicked(owner, repoName)
+        }
         PullRefreshIndicator(
             refreshing = false,
             state = refreshingState,
             modifier = Modifier.align( Alignment.TopCenter),
             contentColor = LightGreen
         )
+
     }
-    Background()
+
 }
 
 @OptIn(ExperimentalMaterialApi::class)

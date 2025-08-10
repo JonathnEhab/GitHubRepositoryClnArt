@@ -21,6 +21,6 @@ fun Background(modifier: Modifier = Modifier) {
                 )
             )
         )
-    ){  }
+    )
 
 }

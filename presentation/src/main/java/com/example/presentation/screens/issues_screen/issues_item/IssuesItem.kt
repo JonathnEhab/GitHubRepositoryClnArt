@@ -55,7 +55,7 @@ fun IssuesItem(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 2.dp, bottom = 4.dp)
-            .background(color = Color.White)
+            .background(color = Color.Transparent)
             .clip(RoundedCornerShape(25.dp))
 
     ) {
