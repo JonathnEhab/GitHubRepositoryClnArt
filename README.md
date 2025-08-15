@@ -12,7 +12,7 @@ A high‑performance, modular Android application for exploring GitHub repositor
 | **UI Toolkit**           | [Jetpack Compose (Material 3)](https://developer.android.com/jetpack/androidx/releases/compose-material3)|
 | **Architecture**         | Multi‑Module MVVM Clean                          |
 | **Dependency Injection** | [Dagger Hilt](https://dagger.dev/hilt/)          |
-| **Networking**           | [etrofit](https://square.github.io/retrofit/)    |
+| **Networking**           | [retrofit](https://square.github.io/retrofit/)    |
 | **Local Caching**        | [Room](https://developer.android.com/training/data-storage/room?hl=ar)|
 | **Pagination**           | [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) |
 | **State Management**     | [Coroutines + StateFlow](http://developer.android.com/kotlin/coroutines)|
