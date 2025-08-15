@@ -1,4 +1,4 @@
-# 📂 Vodafone‑Task — GitHub Repo Viewer
+# 📂 GitHub Repo Viewer
 
 A high‑performance, modular Android application for exploring GitHub repositories, showcasing **Kotlin**, **Jetpack Compose**, and **Clean Architecture** in a production‑ready setup.
 
@@ -69,8 +69,8 @@ Benefits:
 
 ## 📸 Screenshots
 
-| Repo List (Light)           | Repo List (Dark)           | Repo Details            |
+| HOME          | DETAILS          | ISSUES         |
 | --------------------------- | -------------------------- | ----------------------- |
-| ![](art/repolist_light.png) | ![](art/repolist_dark.png) | ![](art/repodetail.png) |
+| ![HOME](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/home.jpg) | ![DETAILS]([art/repolist_dark.png](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/home.jpg)) | ![ISSUES]([art/repodetail.png](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/issues.jpg)) |
 
 
