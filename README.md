@@ -69,8 +69,9 @@ Benefits:
 
 ## 📸 Screenshots
 
-| HOME          | DETAILS          | ISSUES         |
+| HOME          | RDETAILS       | ISSUES       |
 | --------------------------- | -------------------------- | ----------------------- |
-| ![HOME](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/home.jpg) | ![DETAILS]([art/repolist_dark.png](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/home.jpg)) | ![ISSUES]([art/repodetail.png](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/issues.jpg)) |
+| ![HOME](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/home.jpg) | ![DETAILS](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/Details.jpg) | ![ISSUES](https://github.com/JonathnEhab/GitHubRepositoryClnArt/blob/master/issues.jpg) |
+
 
 
